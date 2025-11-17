@@ -3,16 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import type React from "react";
 
+type LineContent = string | React.ReactNode;
+
 type Line = {
   id: number;
-  content: string;
+  content: LineContent;
 };
 
 type TerminalProps = {
   ip: string;
 };
 
-const HELP_LINES: string[] = [
+const HELP_LINES: LineContent[] = [
   "Available commands:",
   "  help   - Show this help message",
   "  about  - Learn more about me",
@@ -21,34 +23,71 @@ const HELP_LINES: string[] = [
   "  social - View my social links",
 ];
 
-const ABOUT_LINES: string[] = [
-  "Hi, I am Your Name.",
-  "I am a developer who enjoys building clean UIs and useful tools.",
-  "This is my terminal-style portfolio built with Next.js and Tailwind CSS.",
+const ABOUT_LINES: LineContent[] = [
+  "Arman Rai",
+  "Lalitpur, Nepal 🇳🇵",
+  "BSc.CSIT student and security-focused developer.",
+  "Interested in web application security, networking and clean UX.",
 ];
 
-const RESUME_LINES: string[] = [
-  "Resume:",
-  "  Role: Software Developer",
-  "  Skills: TypeScript, React, Next.js, Node.js, PostgreSQL",
-  "  Experience: Update this section with your real experience.",
+const RESUME_LINES: LineContent[] = [
+  "Experience:",
+  "  Trainee - NCA Nepal (Remote, Kathmandu)",
+  "    Mar 2025 - Sep 2025 · 7 months",
+  "    Completed a 6-month Ethical Hacking Bootcamp focused on Web Application",
+  "    Security, penetration testing and modern offensive security techniques.",
+  "",
+  "  L1 Support Specialist - Vianet Communication (On-site, Lalitpur)",
+  "    Feb 2025 - May 2025 · 4 months",
+  "    Provided first-level remote technical support for broadband customers.",
+  "    Troubleshot connectivity, IP configuration and router/modem hardware.",
+  "    Maintained CPE configuration and documented recurring solutions.",
+  "",
+  "Education:",
+  "  BSc.CSIT, Information Technology - IOST, Tribhuvan University (2024-2028)",
+  "  Prasadi Academy - Mathematics and Computer Science (2021-2023, Grade: A)",
 ];
 
-const SOCIAL_LINES: string[] = [
+const SOCIAL_LINES: LineContent[] = [
   "Social:",
-  "  GitHub:  https://github.com/your-username",
-  "  LinkedIn: https://www.linkedin.com/in/your-username",
-  "  X/Twitter: https://x.com/your-username",
+  (
+    <>
+      {"  GitHub:   "}
+      <a
+        href="https://github.com/arman-rai/"
+        target="_blank"
+        rel="noreferrer"
+        className="text-emerald-300 underline decoration-emerald-400"
+      >
+        github.com/arman-rai
+      </a>
+    </>
+  ),
+  (
+    <>
+      {"  LinkedIn: "}
+      <a
+        href="https://www.linkedin.com/in/rai-arman/"
+        target="_blank"
+        rel="noreferrer"
+        className="text-emerald-300 underline decoration-emerald-400"
+      >
+        linkedin.com/in/rai-arman
+      </a>
+    </>
+  ),
 ];
-
-let nextId = 0;
-
-function createLine(content: string): Line {
-  return { id: nextId++, content };
-}
 
 export default function Terminal({ ip }: TerminalProps) {
-  const [history, setHistory] = useState<Line[]>([
+  const nextIdRef = useRef(0);
+
+  const createLine = (content: LineContent): Line => {
+    const id = nextIdRef.current;
+    nextIdRef.current += 1;
+    return { id, content };
+  };
+
+  const [history, setHistory] = useState<Line[]>(() => [
     createLine("Welcome to my terminal portfolio."),
     createLine("Type 'help' to see available commands."),
   ]);
@@ -81,7 +120,7 @@ export default function Terminal({ ip }: TerminalProps) {
   }, [history]);
 
   function pushLines(
-    lines: string[],
+    lines: LineContent[],
     options?: {
       animated?: boolean;
       delayMs?: number;
@@ -204,31 +243,31 @@ export default function Terminal({ ip }: TerminalProps) {
   }
 
   return (
-    <div className="flex h-[88vh] w-[95vw] max-w-6xl flex-col rounded-2xl border border-white/10 bg-white/5 text-sm text-emerald-200 shadow-[0_0_80px_rgba(16,185,129,0.35)] backdrop-blur-2xl">
-      <div className="flex items-center justify-between border-b border-white/10 bg-black/40 px-4 py-2 text-xs text-zinc-200">
+    <div className="group relative flex h-[88vh] w-[95vw] max-w-6xl flex-col rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent text-sm text-emerald-100 shadow-[0_8px_32px_0_rgba(16,185,129,0.15),0_0_1px_0_rgba(255,255,255,0.2)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] backdrop-blur-[40px] transition-all duration-500 hover:shadow-[0_8px_48px_0_rgba(16,185,129,0.25),0_0_1px_0_rgba(255,255,255,0.3)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-emerald-500/10 before:via-transparent before:to-blue-500/10 before:opacity-50 before:transition-opacity before:duration-500 hover:before:opacity-70">
+      <div className="relative flex items-center justify-between border-b border-white/20 bg-gradient-to-b from-white/10 to-transparent px-4 py-3 text-xs text-zinc-100 backdrop-blur-sm">
         <div className="flex items-center gap-2">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-red-500" />
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-yellow-400" />
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-green-500" />
-          <span className="ml-3">terminal-portfolio</span>
+          <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-[0_0_10px_rgba(239,68,68,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(239,68,68,0.8)]" />
+          <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 shadow-[0_0_10px_rgba(250,204,21,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(250,204,21,0.8)]" />
+          <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(16,185,129,0.8)]" />
+          <span className="ml-3 font-medium tracking-wide">terminal-portfolio</span>
         </div>
-        <span className="font-mono text-[10px] text-zinc-500">Next.js · Tailwind CSS</span>
+        <span className="font-mono text-[10px] text-zinc-400/80 tracking-wider">Next.js · Tailwind CSS</span>
       </div>
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto bg-black/30 px-4 py-3 font-mono"
+        className="relative flex-1 overflow-y-auto bg-gradient-to-b from-black/20 via-black/30 to-black/40 px-6 py-4 font-mono backdrop-blur-sm"
         onClick={() => inputRef.current?.focus()}
       >
         {history.map((line) => (
-          <div key={line.id} className="whitespace-pre-wrap">
+          <div key={line.id} className="whitespace-pre-wrap leading-relaxed text-emerald-100/90">
             {line.content}
           </div>
         ))}
         <div className="mt-1 flex items-center">
-          <span className="mr-2 text-green-400">{prompt}</span>
+          <span className="mr-2 font-semibold text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">{prompt}</span>
           <input
             ref={inputRef}
-            className="flex-1 bg-transparent text-green-400 outline-none caret-green-400"
+            className="flex-1 bg-transparent font-medium text-emerald-300 outline-none caret-emerald-400 placeholder:text-emerald-400/30 drop-shadow-[0_0_4px_rgba(52,211,153,0.3)]"
             value={input}
             onChange={(event) => setInput(event.target.value)}
             onKeyDown={handleKeyDown}
