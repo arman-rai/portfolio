@@ -243,13 +243,13 @@ export default function Terminal({ ip }: TerminalProps) {
   }
 
   return (
-    <div className="group relative flex h-[88vh] w-[95vw] max-w-6xl flex-col rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent text-sm text-emerald-100 shadow-[0_8px_32px_0_rgba(16,185,129,0.15),0_0_1px_0_rgba(255,255,255,0.2)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] backdrop-blur-[40px] transition-all duration-500 hover:shadow-[0_8px_48px_0_rgba(16,185,129,0.25),0_0_1px_0_rgba(255,255,255,0.3)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-emerald-500/10 before:via-transparent before:to-blue-500/10 before:opacity-50 before:transition-opacity before:duration-500 hover:before:opacity-70">
+    <div className="group relative flex h-[88vh] w-[95vw] max-w-6xl flex-col rounded-lg border border-white/20 bg-gradient-to-br from-white/5 via-transparent to-emerald-500/5 text-sm text-emerald-100 shadow-[0_8px_32px_0_rgba(16,185,129,0.15),0_0_1px_0_rgba(255,255,255,0.2)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] backdrop-blur-[40px] transition-all duration-500 hover:shadow-[0_8px_48px_0_rgba(16,185,129,0.25),0_0_1px_0_rgba(255,255,255,0.3)_inset,0_1px_3px_0_rgba(0,0,0,0.3)] before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-emerald-500/10 before:via-transparent before:to-blue-500/10 before:opacity-50 before:transition-opacity before:duration-500 hover:before:opacity-70">
       <div className="relative flex items-center justify-between border-b border-white/20 bg-gradient-to-b from-white/10 to-transparent px-4 py-3 text-xs text-zinc-100 backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-[0_0_10px_rgba(239,68,68,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(239,68,68,0.8)]" />
           <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 shadow-[0_0_10px_rgba(250,204,21,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(250,204,21,0.8)]" />
           <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(16,185,129,0.8)]" />
-          <span className="ml-3 font-medium tracking-wide">terminal-portfolio</span>
+          <span className="ml-3 font-medium tracking-wide">Arman's Terminal</span>
         </div>
         <span className="font-mono text-[10px] text-zinc-400/80 tracking-wider">Next.js · Tailwind CSS</span>
       </div>
