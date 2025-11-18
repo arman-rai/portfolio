@@ -26,22 +26,17 @@ const HELP_LINES: LineContent[] = [
 const ABOUT_LINES: LineContent[] = [
   "Arman Rai",
   "Lalitpur, Nepal 🇳🇵",
-  "BSc.CSIT student and security-focused developer.",
-  "Interested in web application security, networking and clean UX.",
+  "BSc.CSIT student and CTF player.",
+  "Interested in web application security, networking and pentesting.",
 ];
 
 const RESUME_LINES: LineContent[] = [
   "Experience:",
   "  Trainee - NCA Nepal (Remote, Kathmandu)",
   "    Mar 2025 - Sep 2025 · 7 months",
-  "    Completed a 6-month Ethical Hacking Bootcamp focused on Web Application",
-  "    Security, penetration testing and modern offensive security techniques.",
   "",
   "  L1 Support Specialist - Vianet Communication (On-site, Lalitpur)",
   "    Feb 2025 - May 2025 · 4 months",
-  "    Provided first-level remote technical support for broadband customers.",
-  "    Troubleshot connectivity, IP configuration and router/modem hardware.",
-  "    Maintained CPE configuration and documented recurring solutions.",
   "",
   "Education:",
   "  BSc.CSIT, Information Technology - IOST, Tribhuvan University (2024-2028)",
